@@ -42,7 +42,7 @@ def insert_password(service,username,password):
     conn.commit()
 
 def get_password(service):
-    pass
+    pass  #falta acabar 
 
 while True:
     menu()
