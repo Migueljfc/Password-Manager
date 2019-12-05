@@ -27,6 +27,7 @@ def menu():
     print("| 3-> Recover a password        |")
     print("| 4-> Delete user               |")
     print("| 5-> Update password           |")
+    print("| 6-> Delete all users          |")
     print("| 0-> Exit                      |")
     print("|_______________________________|")
 
@@ -77,10 +78,18 @@ def edit(username,password,service):
     else :
         print("Success")
     conn.commit()
+def del_all():
+    cursor.execute('''
+        DELETE FROM USERS 
+    ''')
+    print("Deleted")
+    conn.commit()
+
+
 while True:
     menu()
     op = input("Option-> ")
-    if op not in['0','1','2','3','4','5']:
+    if op not in['0','1','2','3','4','5','6']:
         print("Invalid Option")
         continue
     if op == '0' :
@@ -103,6 +112,7 @@ while True:
         service = input ('What\'s the service ? ')
         password = input('What is the new password ?')
         edit(username,password,service)
-
+    if op == '6':
+        del_all()
 
 conn.close()
